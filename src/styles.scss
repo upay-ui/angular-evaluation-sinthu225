@@ -1,0 +1,123 @@
+// Author: Sinthujan
+//  Mail: psinthu.04@gmail.com
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$main-black: #060606;
+$main-orange: #ea5c18;
+
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: 639px) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: 640px) and (max-width: 1023px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 1024px) { @content; }
+  }
+}
+
+
+@mixin translateY($e) {
+  -webkit-transform: translateY($e);
+  -moz-transform: translateY($e);
+  transform: translateY($e);
+}
+
+@mixin translateX($e) {
+  -webkit-transform: translateX($e);
+  -moz-transform: translateX($e);
+  transform: translateX($e);
+}
+
+@mixin translateBoth($e, $a) {
+  -webkit-transform: translate($e, $a);
+  -moz-transform: translate($e, $a);
+  transform: translate($e, $a);
+}
+
+@mixin transition($e) {
+  -webkit-transition: $e;
+  -moz-transition: $e;
+  transition: $e;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    .container{
+      margin: 0 auto;
+      max-width: 1000px;
+
+      &:before,
+      &:after{
+        content: " ";
+        display: table;
+      }
+
+      @include respond-to(desktop){
+        width: 80%;
+      }
+
+      @include respond-to(tablet){
+        width: 90%;
+      }
+
+      @include respond-to(mobile){
+        width: 100%;
+      }
+    }
+  
+    &:after{
+        clear: both;
+    }
+}
+
+
+
+
+
+  .cdk-overlay-pane{
+    top: 64px !important;
+    left: 0!important;
+
+    .mat-menu-panel {
+        min-width: 250px;
+        max-height: 100vh;
+        border-radius: 0;
+        height: 100vh;
+        background: #757575;
+    }
+}
+
+.view-mobile{
+  @include respond-to(mobile){
+    display: flex !important;
+    justify-content: space-between;
+  }
+  @include respond-to(desktop){
+    display: none !important;
+  }
+
+  @include respond-to(tablet){
+    display: none !important;
+  }
+}
+
+.view-desktop{
+  @include respond-to(mobile){
+    display: none !important;
+  }
+  @include respond-to(desktop){
+    display:flex !important;
+  }
+
+  @include respond-to(tablet){
+    display: flex !important;
+  }
+}
+
